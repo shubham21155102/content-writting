@@ -5,7 +5,6 @@ import {
   useFadeV,
   useTypewriterV,
   ChatBubble,
-  TypingIndicator,
 } from "./helpers-viral";
 
 const FONT = "'SF Pro', 'Segoe UI', system-ui, sans-serif";

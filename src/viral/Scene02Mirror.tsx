@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
-import { V, useSpringV, useTypewriterV, useCount } from "./helpers-viral";
+import { V, useTypewriterV, useCount } from "./helpers-viral";
 
 const FONT = "'SF Pro', 'Segoe UI', system-ui, sans-serif";
 
@@ -82,12 +82,6 @@ export const Scene02Mirror: React.FC = () => {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-
-  const leftColor = `rgb(${255 - mergeT * 116}, ${255 - mergeT * 163}, ${255 - mergeT * 9})`;
-  // purple is #8B5CF6 = rgb(139, 92, 246)
-  const rightColor = `rgb(${139 + mergeT * (255 - 139) * 0}, ${92 + mergeT * (255 - 92) * 0.5}, ${246 - mergeT * (246 - 246) * 0})`;
-  // Simpler: left goes toward purple-white mix, right stays
-  const mergedColor = `rgb(${Math.round(197 + mergeT * 0)}, ${Math.round(174 + mergeT * 0)}, ${Math.round(251 + mergeT * 0)})`;
 
   const leftDotColor = mergeT > 0
     ? `rgb(${Math.round(255 - mergeT * 58)}, ${Math.round(255 - mergeT * 81)}, ${Math.round(255 - mergeT * 4)})`

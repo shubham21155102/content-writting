@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
-import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
-import { V, useFadeV, useSpringV, useTypewriterV } from "./helpers-viral";
+import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
+import { V, useTypewriterV } from "./helpers-viral";
 
 // ── Notification rain fragment ───────────────────────────────────────────────
 const RainFragment: React.FC<{
@@ -128,7 +128,6 @@ const FeedPost: React.FC<{
 // ── Main scene ───────────────────────────────────────────────────────────────
 export const Scene15Continue: React.FC = () => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
 
   // Scroll feed upward over time
   const scrollOffset = interpolate(frame, [0, 300], [0, 180], {

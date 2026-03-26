@@ -5,6 +5,36 @@ import { V, useFadeV, useTypewriterV } from "./helpers-viral";
 const FONT = "'SF Pro', 'Segoe UI', system-ui, sans-serif";
 const MONO = "'SF Mono', 'Courier New', monospace";
 
+const ScreenLine: React.FC<{
+  line: { text: string; delay: number; size: number; weight: number; color: string };
+  index: number;
+  blinkOp: number;
+}> = ({ line, index, blinkOp }) => {
+  const frame = useCurrentFrame();
+  const typed = useTypewriterV(line.text, line.delay, 1.5);
+  const lineOp = interpolate(frame, [line.delay, line.delay + 12], [0, 1], {
+    extrapolateLeft: "clamp", extrapolateRight: "clamp",
+  });
+  const lineY = interpolate(frame, [line.delay, line.delay + 12], [8, 0], {
+    extrapolateLeft: "clamp", extrapolateRight: "clamp",
+  });
+  return (
+    <div style={{
+      fontFamily: MONO, fontSize: line.size, fontWeight: line.weight,
+      color: line.color, opacity: lineOp, transform: `translateY(${lineY}px)`,
+      display: "flex", alignItems: "center", gap: 8,
+    }}>
+      {index === 1 && (
+        <div style={{
+          width: 8, height: 8, borderRadius: "50%",
+          background: V.green, opacity: blinkOp, marginRight: 4,
+        }} />
+      )}
+      {typed}
+    </div>
+  );
+};
+
 export const Scene09Confront: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -334,47 +364,9 @@ export const Scene09Confront: React.FC = () => {
                 width: "100%",
               }}
             >
-              {screenLines.map((line, i) => {
-                const lineOp = interpolate(frame, [line.delay, line.delay + 12], [0, 1], {
-                  extrapolateLeft: "clamp",
-                  extrapolateRight: "clamp",
-                });
-                const lineY = interpolate(frame, [line.delay, line.delay + 12], [8, 0], {
-                  extrapolateLeft: "clamp",
-                  extrapolateRight: "clamp",
-                });
-
-                return (
-                  <div
-                    key={i}
-                    style={{
-                      fontFamily: MONO,
-                      fontSize: line.size,
-                      fontWeight: line.weight,
-                      color: line.color,
-                      opacity: lineOp,
-                      transform: `translateY(${lineY}px)`,
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 8,
-                    }}
-                  >
-                    {i === 1 && (
-                      <div
-                        style={{
-                          width: 8,
-                          height: 8,
-                          borderRadius: "50%",
-                          background: V.green,
-                          opacity: blinkOp,
-                          marginRight: 4,
-                        }}
-                      />
-                    )}
-                    {useTypewriterV(line.text, line.delay, 1.5)}
-                  </div>
-                );
-              })}
+              {screenLines.map((line, i) => (
+                <ScreenLine key={i} line={line} index={i} blinkOp={blinkOp} />
+              ))}
             </div>
           )}
 

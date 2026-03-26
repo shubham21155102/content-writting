@@ -118,9 +118,14 @@ export const TypingIndicator: React.FC<{
   delay: number; y?: number; duration?: number;
 }> = ({ delay, y = 0, duration = 60 }) => {
   const frame = useCurrentFrame();
-  const op = interpolate(frame, [delay, delay + 10, delay + duration - 10, delay + duration], [0, 1, 1, 0], {
-    extrapolateLeft: "clamp", extrapolateRight: "clamp",
-  });
+  const fadeIn = Math.min(10, Math.floor(duration * 0.15));
+  const fadeOut = Math.min(10, Math.floor(duration * 0.15));
+  const op = interpolate(
+    frame,
+    [delay, delay + fadeIn, delay + duration - fadeOut - 1, delay + duration],
+    [0, 1, 1, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+  );
   return (
     <div style={{
       position: "absolute", top: y, left: 80,

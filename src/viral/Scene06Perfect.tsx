@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
-import { V, useFadeV, useSpringV, useTypewriterV } from "./helpers-viral";
+import { V, useFadeV, useTypewriterV } from "./helpers-viral";
 
 const FONT = "'SF Pro', 'Segoe UI', system-ui, sans-serif";
 
@@ -87,7 +87,6 @@ const PostCard: React.FC<{
 
 export const Scene06Perfect: React.FC = () => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
 
   // Headers
   const headerOp = interpolate(frame, [5, 20], [0, 1], {

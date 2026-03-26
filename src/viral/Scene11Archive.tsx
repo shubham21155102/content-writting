@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
-import { V, useFadeV, useSpringV, useCount, GhostText } from "./helpers-viral";
+import { V, useFadeV, GhostText } from "./helpers-viral";
 
 const FONT_UI = "'SF Pro', 'Segoe UI', system-ui, sans-serif";
 
@@ -110,8 +110,6 @@ const AnimatedStat: React.FC<{
 };
 
 export const Scene11Archive: React.FC = () => {
-  const frame = useCurrentFrame();
-
   // Title
   const titleOp = useFadeV(5, 20);
 

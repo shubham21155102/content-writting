@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
-import { V, useSpringV, useTypewriterV } from "./helpers-viral";
+import { V } from "./helpers-viral";
 
 const FONT = "'SF Pro', 'Segoe UI', system-ui, sans-serif";
 
@@ -55,7 +55,6 @@ export const Scene04Moment: React.FC = () => {
   });
 
   // Final text
-  const finalText = "But your phone didn't.";
   const finalOp = interpolate(frame, [210, 220], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",

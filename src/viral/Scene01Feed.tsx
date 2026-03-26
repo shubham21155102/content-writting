@@ -1,6 +1,6 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
-import { V, useFadeV, useSpringV, useTypewriterV, useCount, Notification } from "./helpers-viral";
+import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
+import { V, useFadeV, useTypewriterV, useCount, Notification } from "./helpers-viral";
 
 const FONT = "'SF Pro', 'Segoe UI', system-ui, sans-serif";
 
@@ -16,7 +16,6 @@ const notifications = [
 
 export const Scene01Feed: React.FC = () => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
 
   const count = useCount(10, 180, 0, 847293);
   const counterOp = useFadeV(10, 20);

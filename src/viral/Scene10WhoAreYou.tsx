@@ -1,12 +1,11 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
-import { V, useFadeV, useSpringV, ChatBubble } from "./helpers-viral";
+import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
+import { V, useFadeV, ChatBubble } from "./helpers-viral";
 
 const FONT_UI = "'SF Pro', 'Segoe UI', system-ui, sans-serif";
 
 export const Scene10WhoAreYou: React.FC = () => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
 
   // Purple glow at bottom after last message
   const glowOp = interpolate(frame, [220, 260], [0, 0.6], {

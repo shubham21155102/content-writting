@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
-import { V, useFadeV, useSpringV, useTypewriterV } from "./helpers-viral";
+import { V, useFadeV, useTypewriterV } from "./helpers-viral";
 
 const FONT_UI = "'SF Pro', 'Segoe UI', system-ui, sans-serif";
 

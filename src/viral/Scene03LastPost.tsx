@@ -1,12 +1,11 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
-import { V, useFadeV, useSpringV, useTypewriterV, SocialPost } from "./helpers-viral";
+import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
+import { V, useFadeV, useTypewriterV, SocialPost } from "./helpers-viral";
 
 const FONT = "'SF Pro', 'Segoe UI', system-ui, sans-serif";
 
 export const Scene03LastPost: React.FC = () => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
 
   // Engagement
   const engageOp1 = useFadeV(40, 15);

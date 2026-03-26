@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
-import { V, useTypewriterV, useSpringV } from "./helpers-viral";
+import { V, useTypewriterV } from "./helpers-viral";
 
 export const Scene17Final: React.FC = () => {
   const frame = useCurrentFrame();
